@@ -1,0 +1,72 @@
+name: Release & Versioning
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'VERSION'
+      - 'CHANGELOG.md'
+
+jobs:
+  release:
+    name: Validate changelog, create tag, and GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read VERSION
+        id: version
+        run: |
+          VERSION=$(cat VERSION | tr -d ' \n')
+          if [ -z "$VERSION" ]; then
+            echo "VERSION file empty"
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure changelog entry exists for this version
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          if ! grep -q "## \[$VERSION\]" CHANGELOG.md; then
+            echo "CHANGELOG missing entry for $VERSION"
+            exit 1
+          fi
+
+      - name: Fetch tags
+        run: git fetch --tags --force
+
+      - name: Ensure tag does not already exist
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          TAG="v${VERSION}"
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG already exists"
+            exit 1
+          fi
+
+      - name: Create git tag
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          TAG="v${VERSION}"
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git tag -a "$TAG" -m "Release $TAG"
+          git push origin "$TAG"
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          release_name: DHG Core 4 v${{ steps.version.outputs.version }}
+          body: |
+            DHG Core 4 release v${{ steps.version.outputs.version }}.
+            See CHANGELOG.md.
+          draft: false
+          prerelease: false

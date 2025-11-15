@@ -4,7 +4,7 @@
 
 ### Added
 - FastAPI backend with CRUD asset API.
-- React + Vite + TS frontend.
+- React + Vite + TypeScript frontend.
 - PostgreSQL with pgvector enabled.
 - Docker Compose stack.
 - Complete documentation set.
