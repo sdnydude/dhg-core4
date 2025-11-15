@@ -1,27 +1,16 @@
 ---
 name: Feature request
-about: Suggest an idea for DHG Core 4
-title: "[FEAT] "
+about: Suggest a new feature for DHG Core 4
 labels: enhancement
-assignees: ""
 ---
 
-## Feature Description
+## Description
+What feature would you like?
 
-Describe the feature you would like to see.
-
-## Use Case
-
-What problem does this solve? Who benefits from it?
+## Motivation
+Why is it needed?
 
 ## Proposed Solution
-
-Describe your preferred solution, if you have one.
-
-## Alternatives
-
-Describe any alternative solutions or workarounds you have considered.
+Your preferred approach.
 
 ## Additional context
-
-Add any other context or screenshots here.

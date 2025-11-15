@@ -1,23 +1,18 @@
-# Summary
+# Pull Request — DHG Core 4
 
-Describe the change in a sentence or two.
+## Summary
+Describe what this PR does and why.
 
 ## Changes
-
 - [ ] Backend
 - [ ] Frontend
-- [ ] Infra / Docker
-- [ ] Docs
+- [ ] Infrastructure
+- [ ] Documentation
 
 ## Testing
+Describe how you tested the change.
 
-Describe how you tested this change.
-
-- [ ] Docker compose up
-- [ ] Backend endpoint tested
-- [ ] Frontend page tested
-- [ ] Other (describe)
-
-## Notes
-
-Any extra context, risks, or follow-ups.
+## Checklist
+- [ ] Code builds locally
+- [ ] Docker Compose runs without error
+- [ ] No sensitive data included

@@ -1,37 +1,22 @@
 ---
 name: Bug report
-about: Report a bug in DHG Core 4
-title: "[BUG] "
+about: Report a problem in DHG Core 4
 labels: bug
-assignees: ""
 ---
 
-## Describe the bug
+## Description
+Describe the bug clearly.
 
-A clear and concise description of what the bug is.
+## Steps to Reproduce
+1. ...
+2. ...
 
-## To Reproduce
-
-Steps to reproduce the behavior:
-
-1. Go to '...'
-2. Run '...'
-3. See error '...'
-
-## Expected behavior
-
-A clear and concise description of what you expected to happen.
-
-## Screenshots / Logs
-
-If applicable, add screenshots or relevant logs.
+## Expected
+What should have happened?
 
 ## Environment
-
 - OS:
-- Docker version:
-- Branch / commit:
+- Docker:
+- Version:
 
 ## Additional context
-
-Add any other context about the problem here.
