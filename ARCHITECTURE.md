@@ -1,0 +1,3 @@
+# DHG Core Architecture
+
+Details...
